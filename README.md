@@ -204,5 +204,3 @@ MATCH (p:Produit {id: row.id_produit})
 MERGE (f)-[:FOURNIT {quantite_fournie: row.quantite_fournie, date_fourniture: row.date_fourniture}]->(p);
 ```
 ```
-
-Tu peux maintenant utiliser ce fichier pour une documentation ou pour l'intégrer à un système de gestion de version.
