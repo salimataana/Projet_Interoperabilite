@@ -424,6 +424,7 @@ ON CREATE SET
   a.note = avis.note;
 ```
 
+
 ## Créer les relations
 
 ### Relier les Clients aux Réclamations
