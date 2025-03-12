@@ -3,39 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interface Neo4j</title>
+    <title>Interface</title>
     <style>
-        /* Reset des styles par défaut */
+        /* Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* Styles généraux */
+        /* Body */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f9;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
             color: #333;
-            line-height: 1.6;
             padding: 20px;
         }
 
+        /* Conteneur */
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        /* Titre */
         h1 {
             text-align: center;
             color: #2c3e50;
-            margin-bottom: 20px;
             font-size: 2.5em;
-        }
-
-        /* Conteneur principal */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         /* Menu déroulant */
@@ -51,18 +51,19 @@
         .menu select {
             width: 100%;
             padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            border: 2px solid #3498db;
+            border-radius: 8px;
             font-size: 1em;
-            margin-top: 5px;
-            background-color: #f9f9f9;
+            background-color: #ecf0f1;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .menu select:hover {
+            background-color: #d5dbdb;
         }
 
         /* Formulaire */
-        form {
-            margin-bottom: 20px;
-        }
-
         form label {
             font-weight: bold;
             color: #34495e;
@@ -70,42 +71,54 @@
 
         form textarea {
             width: 100%;
-            height: 100px;
+            height: 120px;
             padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            border: 2px solid #3498db;
+            border-radius: 8px;
             font-size: 1em;
-            margin-top: 5px;
             background-color: #f9f9f9;
             resize: vertical;
+            transition: 0.3s;
         }
 
+        form textarea:focus {
+            background-color: #ecf0f1;
+            border-color: #2980b9;
+        }
+
+        /* Boutons */
         form button {
-            padding: 10px 20px;
+            width: 100%;
+            padding: 12px;
             border: none;
-            border-radius: 5px;
-            background-color: #3498db;
-            color: #fff;
+            border-radius: 8px;
             font-size: 1em;
             cursor: pointer;
-            margin-top: 10px;
-            transition: background-color 0.3s ease;
+            transition: 0.3s;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        form button[type="submit"] {
+            background-color: #3498db;
+            color: white;
+        }
+
+        form button[type="submit"]:hover {
+            background-color: #2980b9;
         }
 
         form button[type="button"] {
             background-color: #e74c3c;
-            margin-left: 10px;
-        }
-
-        form button:hover {
-            background-color: #2980b9;
+            color: white;
+            margin-top: 10px;
         }
 
         form button[type="button"]:hover {
             background-color: #c0392b;
         }
 
-        /* Tableau des résultats */
+        /* Table */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -115,27 +128,40 @@
         table th, table td {
             padding: 12px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 2px solid #ddd;
         }
 
         table th {
             background-color: #3498db;
-            color: #fff;
+            color: white;
             font-weight: bold;
         }
 
         table tr:hover {
-            background-color: #f1f1f1;
+            background-color: #ecf0f1;
+            transition: 0.3s;
         }
 
-        /* Messages d'erreur */
+        /* Erreur */
         .error {
             color: #e74c3c;
             font-weight: bold;
             margin-top: 10px;
         }
 
-        /* Responsive design */
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
         @media (max-width: 600px) {
             h1 {
                 font-size: 2em;
@@ -147,20 +173,15 @@
 
             form button {
                 width: 100%;
-                margin-top: 10px;
-            }
-
-            form button[type="button"] {
-                margin-left: 0;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Interface Neo4j</h1>
 
-        <!-- Menu déroulant pour les requêtes prédéfinies -->
+
+        <!-- Menu déroulant -->
         <div class="menu">
             <label for="query-select">Requêtes prédéfinies :</label>
             <select id="query-select" onchange="updateQuery()">
@@ -169,18 +190,19 @@
                 <option value="MATCH (p:Produit) RETURN p.id AS ID, p.nom AS Nom, p.prix AS Prix">Afficher tous les produits</option>
                 <option value="MATCH (c:Client {id: 1})-[:ACHETE]->(a:Achat)-[:CONCERNE]->(p:Produit) RETURN c.nom AS Client, p.nom AS Produit, a.date_achat AS Date_Achat">Afficher les achats d'un client</option>
                 <option value="MATCH (c:Client)-[:DONNE_AVIS]->(a:AvisClient) RETURN c.nom AS Client, a.commentaire AS Commentaire, a.note AS Note">Afficher les avis des clients</option>
+                <option value="MATCH (c:Client)-[:FAIT_RECLAMATION]->(r:Reclamation) RETURN c.nom AS Client, r.description AS Description, r.date AS Date">Afficher les réclamations des clients</option>
             </select>
         </div>
 
-        <!-- Formulaire pour saisir une requête -->
+        <!-- Formulaire -->
         <form method="POST">
             <label for="query">Entrez votre requête Cypher :</label><br>
             <textarea id="query" name="query" required></textarea><br>
             <button type="submit">Exécuter</button>
-            <button type="button" onclick="clearResults()">Effacer les résultats</button>
+            <button type="button" onclick="clearResults()">Effacer</button>
         </form>
 
-        <!-- Affichage des résultats ou des erreurs -->
+        <!-- Résultats -->
         {% if results %}
             <h2>Résultats :</h2>
             {% if results is mapping and results.error %}
@@ -208,21 +230,15 @@
         {% endif %}
     </div>
 
-    <!-- JavaScript pour gérer le menu déroulant et effacer les résultats -->
+    <!-- JavaScript -->
     <script>
-        // Fonction pour mettre à jour le champ de texte avec la requête sélectionnée
         function updateQuery() {
-            const querySelect = document.getElementById("query-select");
-            const queryTextarea = document.getElementById("query");
-            queryTextarea.value = querySelect.value;
+            document.getElementById("query").value = document.getElementById("query-select").value;
         }
 
-        // Fonction pour effacer les résultats
         function clearResults() {
-            const resultsTable = document.getElementById("results-table");
-            if (resultsTable) {
-                resultsTable.innerHTML = "";
-            }
+            let table = document.getElementById("results-table");
+            if (table) table.innerHTML = "";
         }
     </script>
 </body>
