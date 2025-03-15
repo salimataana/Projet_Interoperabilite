@@ -14,15 +14,13 @@
 
 /* Styles généraux */
 body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(to right, #74ebd5, #acb6e5);
-    color: #333;
-    line-height: 1.6;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+             background-color: #f4f4f9;
+             font-family: 'Poppins', sans-serif;
+             background: linear-gradient(135deg, #2c3e50, #3498db);
+             color: #333;
+             line-height: 1.6;
+             padding: 20px;
 }
 
 h1 {
@@ -34,12 +32,13 @@ h1 {
 
 /* Conteneur principal */
 .container {
-    max-width: 900px;
-    width: 100%;
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    max-width: 800px;
+             margin: 50px auto;
+             background: white;
+             padding: 20px;
+             border-radius: 12px;
+             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+             animation: fadeIn 1s ease-in-out;
 }
 
 /* Menu déroulant */
@@ -97,21 +96,49 @@ form textarea:focus {
     outline: none;
 }
 
+/* Boutons */
 form button {
-    padding: 12px 20px;
-    border: none;
-    border-radius: 6px;
-    background-color: #3498db;
-    color: #fff;
-    font-size: 1em;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: 0.3s;
-}
-
-form button:hover {
-    background-color: #2980b9;
-}
+             padding: 10px 20px;
+             width: 100%;
+             padding: 12px;
+             border: none;
+             border-radius: 5px;
+             background-color: #3498db;
+             color: #fff;
+             border-radius: 8px;
+             font-size: 1em;
+             cursor: pointer;
+             margin-top: 10px;
+             transition: background-color 0.3s ease;
+             transition: 0.3s;
+             font-weight: bold;
+             text-transform: uppercase;
+         }
+ 
+         form button[type="button"] {
+             background-color: #e74c3c;
+             margin-left: 10px;
+         }
+         form button[type="submit"] {
+             background-color: #3498db;
+             color: white;
+         }
+ 
+         form button:hover {
+         form button[type="submit"]:hover {
+             background-color: #2980b9;
+         }
+        }
+ 
+         form button[type="button"] {
+             background-color: #e74c3c;
+             color: white;
+             margin-top: 10px;
+         }
+ 
+         form button[type="button"]:hover {
+             background-color: #c0392b;
+         }
 
 /* Tableau des résultats */
 table {
