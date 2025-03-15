@@ -3,206 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interface</title>
+    <title>Interface Neo4j</title>
     <style>
-        /* Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* Reset des styles par défaut */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        /* Body */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #2c3e50, #3498db);
-            color: #333;
-            padding: 20px;
-        }
+/* Styles généraux */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #74ebd5, #acb6e5);
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
 
-        /* Conteneur */
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            animation: fadeIn 1s ease-in-out;
-        }
+h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+}
 
-        /* Titre */
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-            font-size: 2.5em;
-        }
+/* Conteneur principal */
+.container {
+    max-width: 900px;
+    width: 100%;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
 
-        /* Menu déroulant */
-        .menu {
-            margin-bottom: 20px;
-        }
+/* Menu déroulant */
+.menu {
+    margin-bottom: 20px;
+}
 
-        .menu label {
-            font-weight: bold;
-            color: #34495e;
-        }
+.menu label {
+    font-weight: bold;
+    color: #34495e;
+    display: block;
+    margin-bottom: 5px;
+}
 
-        .menu select {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid #3498db;
-            border-radius: 8px;
-            font-size: 1em;
-            background-color: #ecf0f1;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+.menu select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    background-color: #f9f9f9;
+    transition: 0.3s;
+}
 
-        .menu select:hover {
-            background-color: #d5dbdb;
-        }
+.menu select:hover {
+    border-color: #3498db;
+}
 
-        /* Formulaire */
-        form label {
-            font-weight: bold;
-            color: #34495e;
-        }
+/* Formulaire */
+form {
+    margin-bottom: 20px;
+}
 
-        form textarea {
-            width: 100%;
-            height: 120px;
-            padding: 10px;
-            border: 2px solid #3498db;
-            border-radius: 8px;
-            font-size: 1em;
-            background-color: #f9f9f9;
-            resize: vertical;
-            transition: 0.3s;
-        }
+form label {
+    font-weight: bold;
+    color: #34495e;
+    display: block;
+    margin-bottom: 5px;
+}
 
-        form textarea:focus {
-            background-color: #ecf0f1;
-            border-color: #2980b9;
-        }
+form textarea {
+    width: 100%;
+    height: 120px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    background-color: #f9f9f9;
+    resize: vertical;
+    transition: 0.3s;
+}
 
-        /* Boutons */
-        form button {
-            width: 100%;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1em;
-            cursor: pointer;
-            transition: 0.3s;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
+form textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
 
-        form button[type="submit"] {
-            background-color: #3498db;
-            color: white;
-        }
+form button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: #3498db;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
 
-        form button[type="submit"]:hover {
-            background-color: #2980b9;
-        }
+form button:hover {
+    background-color: #2980b9;
+}
 
-        form button[type="button"] {
-            background-color: #e74c3c;
-            color: white;
-            margin-top: 10px;
-        }
+/* Tableau des résultats */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
 
-        form button[type="button"]:hover {
-            background-color: #c0392b;
-        }
+table th, table td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
 
-        /* Table */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+table th {
+    background-color: #3498db;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
 
-        table th, table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 2px solid #ddd;
-        }
+table tr:hover {
+    background-color: #f1f1f1;
+}
 
-        table th {
-            background-color: #3498db;
-            color: white;
-            font-weight: bold;
-        }
+/* Messages d'erreur */
+.error {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-top: 10px;
+}
 
-        table tr:hover {
-            background-color: #ecf0f1;
-            transition: 0.3s;
-        }
-
-        /* Erreur */
-        .error {
-            color: #e74c3c;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        /* Animation */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2em;
-            }
-
-            .container {
-                padding: 15px;
-            }
-
-            form button {
-                width: 100%;
-            }
-        }
+.hidden {
+    display: none;
+}
     </style>
 </head>
 <body>
     <div class="container">
-
-
-        <!-- Menu déroulant -->
+        <h1>Interface Neo4j</h1>
+        
         <div class="menu">
             <label for="query-select">Requêtes prédéfinies :</label>
             <select id="query-select" onchange="updateQuery()">
                 <option value="">Sélectionnez une requête</option>
-                <option value="MATCH (c:Client) RETURN c.id AS ID, c.nom AS Nom, c.prenom AS Prénom">Afficher tous les clients</option>
-                <option value="MATCH (p:Produit) RETURN p.id AS ID, p.nom AS Nom, p.prix AS Prix">Afficher tous les produits</option>
-                <option value="MATCH (c:Client {id: 1})-[:ACHETE]->(a:Achat)-[:CONCERNE]->(p:Produit) RETURN c.nom AS Client, p.nom AS Produit, a.date_achat AS Date_Achat">Afficher les achats d'un client</option>
-                <option value="MATCH (c:Client)-[:DONNE_AVIS]->(a:AvisClient) RETURN c.nom AS Client, a.commentaire AS Commentaire, a.note AS Note">Afficher les avis des clients</option>
-                <option value="MATCH (c:Client)-[:FAIT_RECLAMATION]->(r:Reclamation) RETURN c.nom AS Client, r.description AS Description, r.date AS Date">Afficher les réclamations des clients</option>
+                <optgroup label="Requêtes Simples">
+                    <option value="MATCH (c:Client) RETURN c.id AS ID, c.nom AS Nom, c.prenom AS Prénom, c.contact AS Contact, c.email AS Email">Afficher tous les clients</option>
+                    <option value="MATCH (p:Produit) RETURN p.id AS ID, p.nom AS Nom, p.description AS Description, p.prix AS Prix">Afficher tous les produits</option>
+                    <option value="MATCH (f:Fournisseur) RETURN f.id AS id, f.nom AS nom, f.contact AS Contact">Afficher tous les fournisseurs</option>
+                    <option value="MATCH (r:Reclamation) RETURN r.statut, count(r) AS nombre_reclamations_par_statut;">Afficher le nombre de réclamation par statut</option>
+                    
+                </optgroup>
+                <optgroup label="Requêtes Spécifiques">
+                    <option value="ACHATS_CLIENT">Afficher les achats d'un client</option>
+                    <option value="PRODUITS_FOURNISSEUR">Afficher les produits d'un fournisseur</option>
+                </optgroup>
+                <optgroup label="Requêtes Complexes">
+                    <option value="MATCH (c:Client)-[:A_ACHETE]->(a:Achat)-[:CONCERNE]->(p:Produit) MATCH (p)<-[:AFFECTE_A]-(r:Reclamation) RETURN DISTINCT c.nom AS Client, p.nom AS Produit, r.statut AS Statut;">
+                        Afficher les clients qui ont acheté un produit ayant fait l’objet d’une réclamation 
+                    </option>
+                    <option value="MATCH (f:Fournisseur)-[:FOURNIT]->(p:Produit) WHERE NOT EXISTS { MATCH (p)<-[:AFFECTE_A]-(r:Reclamation)} RETURN f.nom AS Fournisseur, p.nom AS Produit;">
+                        Afficher les fournisseurs qui n'ont jamais eu de réclamations sur leurs produits 
+                    </option>
+                    <option value="MATCH (c:Client)-[:A_ACHETE]->(a:Achat)-[:CONCERNE]->(p:Produit), (c)-[:ECRIT]->(av:Avis)-[:CONCERNE]->(p) RETURN p.nom AS Produit, c.nom AS Client, count(DISTINCT c) AS nb_clients_ayant_donne_avis ORDER BY nb_clients_ayant_donne_avis DESC;">
+                        Afficher les produits achetés par des clients ayant laissé un avis
+                    </option>
+                    <option value="MATCH (f:Fournisseur)-[:FOURNIT]->(p:Produit)<-[:AFFECTE_A]-(r:Reclamation) RETURN f.nom AS Fournisseur, p.nom AS Produit, r.description AS Description, count(DISTINCT p) AS nb_produits_reclames ORDER BY nb_produits_reclames DESC;">
+                        Afficher les fournisseurs qui ont le plus de produits ayant fait l’objet d’une réclamation
+                    </option>
+                </optgroup>         
             </select>
         </div>
-
-        <!-- Formulaire -->
+        
+        <div class="menu hidden" id="client-menu">
+            <label for="client-select">Sélectionnez un client :</label>
+            <select id="client-select" onchange="updateClientQuery()">
+                <option value="">Sélectionnez un client</option>
+                {% for client in clients %}
+                    <option value="{{ client.id }}">{{ client.nom }} {{ client.prenom }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="menu hidden" id="fournisseur-menu">
+            <label for="fournisseur-select">Sélectionnez un fournisseur :</label>
+            <select id="fournisseur-select" onchange="updateFournisseurQuery()">
+                <option value="">Sélectionnez un fournisseur</option>
+                {% for fournisseur in fournisseurs %}
+                    <option value="{{ fournisseur.id }}">{{ fournisseur.nom }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
         <form method="POST">
             <label for="query">Entrez votre requête Cypher :</label><br>
             <textarea id="query" name="query" required></textarea><br>
             <button type="submit">Exécuter</button>
-            <button type="button" onclick="clearResults()">Effacer</button>
         </form>
 
-        <!-- Résultats -->
         {% if results %}
             <h2>Résultats :</h2>
             {% if results is mapping and results.error %}
@@ -230,16 +238,47 @@
         {% endif %}
     </div>
 
-
     <script>
         function updateQuery() {
-            document.getElementById("query").value = document.getElementById("query-select").value;
+            const querySelect = document.getElementById("query-select");
+            const queryTextarea = document.getElementById("query");
+            const clientMenu = document.getElementById("client-menu");
+            const fournisseurMenu = document.getElementById("fournisseur-menu");
+            
+            clientMenu.classList.add("hidden");
+            fournisseurMenu.classList.add("hidden");
+            
+            if (querySelect.value === "ACHATS_CLIENT") {
+                clientMenu.classList.remove("hidden");
+                queryTextarea.value = "Sélectionnez un client pour voir ses achats.";
+            } else if (querySelect.value === "PRODUITS_FOURNISSEUR") {
+                fournisseurMenu.classList.remove("hidden");
+                queryTextarea.value = "Sélectionnez un fournisseur pour voir ses produits.";
+            } else {
+                queryTextarea.value = querySelect.value;
+            }
         }
 
-        function clearResults() {
-            let table = document.getElementById("results-table");
-            if (table) table.innerHTML = "";
+        function updateClientQuery() {
+            const clientSelect = document.getElementById("client-select");
+            const queryTextarea = document.getElementById("query");
+            const clientId = clientSelect.value;
+            
+            if (clientId) {
+                queryTextarea.value = `MATCH (c:Client {id: '${clientId}'})-[:A_ACHETE]->(a:Achat)-[:CONCERNE]->(p:Produit) RETURN c.nom AS Nom, c.prenom AS Prénom, p.nom AS Produit, a.date_achat AS Date_Achat`;
+            }
+        }
+
+        function updateFournisseurQuery() {
+            const fournisseurSelect = document.getElementById("fournisseur-select");
+            const queryTextarea = document.getElementById("query");
+            const fournisseurId = fournisseurSelect.value;
+            
+            if (fournisseurId) {
+                queryTextarea.value = `MATCH (f:Fournisseur {id: '${fournisseurId}'})-[:FOURNIT]->(p:Produit) OPTIONAL MATCH (p)<-[:AFFECTE_A]-(r:Reclamation) RETURN f.nom AS Fournisseur, p.nom AS Produit, count(r) AS Nombre_Reclamations ORDER BY Nombre_Reclamations DESC`;
+            }
         }
     </script>
+    
 </body>
 </html>
